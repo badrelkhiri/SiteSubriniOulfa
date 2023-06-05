@@ -1,0 +1,7 @@
+{
+  "liveServer.settings.port": 5502,
+  "prettier.insertPragma": true,
+  "editor.formatOnSave": true,
+  "editor.fontWeight": "normal",
+  "editor.defaultFormatter": "esbenp.prettier-vscode"
+}
