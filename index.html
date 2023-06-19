@@ -302,7 +302,7 @@
         </div>
       </div>
     </div>
-
+    <!-- ########################## pedagogique ######################## -->
     <div class="pedagogie container">
       <h1>pedagogique</h1>
       <div class="wrapper-pedagogie">
@@ -326,7 +326,7 @@
             tempora, quisquam nihil perferendis dolorem doloremque vel fugit
             aliquam corporis, sapiente autem veniam in?
           </p>
-          <button>learn more ...</button>
+          <a href="#">learn more ...</a>
         </div>
         <div class="college box">
           <img src="imgs/college.jpg" alt="" />
@@ -337,7 +337,7 @@
             tempora, quisquam nihil perferendis dolorem doloremque vel fugit
             aliquam corporis, sapiente autem veniam in?
           </p>
-          <button>learn more ...</button>
+          <a href="#">learn more ...</a>
         </div>
         <div class="lycee box">
           <img src="imgs/lycee.png" alt="" />
@@ -348,7 +348,7 @@
             tempora, quisquam nihil perferendis dolorem doloremque vel fugit
             aliquam corporis, sapiente autem veniam in?
           </p>
-          <button>learn more ...</button>
+          <a href="#">learn more ...</a>
         </div>
       </div>
     </div>
@@ -540,12 +540,13 @@
       >
         <div class="column">
           <div class="input-box">
-            <label>Prénom <span class="obg">*</span></label>
+            <label for="prenomR">Prénom <span class="obg">*</span></label>
             <input
               type="text"
               placeholder="Entrer votre prénom"
               name="data[nom]"
               required
+              id="prenomR"
             />
           </div>
           <div class="input-box">
@@ -651,7 +652,10 @@
           ></textarea>
         </div>
         <!-- <input type="submit" name="submit" value="Send" /> -->
-        <button type="submit" class="buttonToast">Submit</button>
+        <button type="submit" class="buttonToast">
+          <!-- onclick="return checkforblank()" -->
+          Submit
+        </button>
       </form>
     </section>
     <footer>
@@ -676,6 +680,7 @@
       <input type="text" name="TPren" required id="prenom" />
     </form> -->
     <script src="js/app.js"></script>
+    <!-- <script src="js/"></script> -->
     <script src="js/lightbox-plus-jquery.min.js"></script>
     <script src="js/smtp.js"></script>
     <script></script>

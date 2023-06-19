@@ -772,6 +772,17 @@ span.text {
   justify-content: center;
   margin-bottom: 3rem;
 }
+.wrapper-pedagogie a {
+  display: inline-block;
+  padding: 10px 25px;
+  background: #4070f4;
+  color: white;
+  border-radius: 5px;
+}
+.wrapper-pedagogie p,
+.wrapper-pedagogie h3 {
+  margin: 10px 0;
+}
 @media (max-width: 767px) {
 }
 .pedagogie > h1 {

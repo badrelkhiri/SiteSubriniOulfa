@@ -299,38 +299,49 @@ form.addEventListener("submit", (e) => {
     .then((response) => response.json())
     .then((html) => {
       // you can put any JS code here
-      alert("success");
+      alertV();
     });
 });
 
 // ######################### msg Notification
+function alertV() {
+  const buttonT = document.querySelector(".buttonToast"),
+    toast = document.querySelector(".toast");
+  (closeIcon = document.querySelector(".closetoast")),
+    (progres = document.querySelector(".progres"));
+  let timer1, timer2;
+  buttonT.addEventListener("click", () => {
+    toast.classList.add("activeto");
+    progres.classList.add("activeto");
 
-const buttonT = document.querySelector(".buttonToast"),
-  toast = document.querySelector(".toast");
-(closeIcon = document.querySelector(".closetoast")),
-  (progres = document.querySelector(".progres"));
+    timer1 = setTimeout(() => {
+      toast.classList.remove("activeto");
+    }, 5000); //1s = 1000 milliseconds
 
-let timer1, timer2;
-buttonT.addEventListener("click", () => {
-  toast.classList.add("activeto");
-  progres.classList.add("activeto");
+    timer2 = setTimeout(() => {
+      progres.classList.remove("activeto");
+    }, 5300);
+  });
 
-  timer1 = setTimeout(() => {
+  closeIcon.addEventListener("click", () => {
     toast.classList.remove("activeto");
-  }, 5000); //1s = 1000 milliseconds
 
-  timer2 = setTimeout(() => {
-    progres.classList.remove("activeto");
-  }, 5300);
-});
+    setTimeout(() => {
+      progress.classList.remove("activeto");
+    }, 300);
 
-closeIcon.addEventListener("click", () => {
-  toast.classList.remove("activeto");
+    clearTimeout(timer1);
+    clearTimeout(timer2);
+  });
+}
+// function Validation input
 
-  setTimeout(() => {
-    progress.classList.remove("activeto");
-  }, 300);
-
-  clearTimeout(timer1);
-  clearTimeout(timer2);
-});
+// function checkforblank() {
+//   if (document.getElementById("prenomR").value === "") {
+//     alert("plz champs!");
+//     return false;
+//   } else {
+//     alertV();
+//     return true;
+//   }
+// }
