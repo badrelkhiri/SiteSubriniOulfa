@@ -464,8 +464,7 @@ ul.social {
   bottom: 30px;
   left: 50%;
   transform: translateX(-50%);
-}
-
+} 
 .img-slider .navigation .btn {
   background: rgba(255, 255, 255, 0.5);
   width: 12px;
@@ -1508,9 +1507,27 @@ footer {
   gap: 15px;
   color: wheat;
 }
-/* footer p {
-} */
-
+footer .row {
+  width: 85%;
+  margin:auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+footer .col {
+  flex-basis: 25%;
+  padding: 10px;
+}
+footer .LogoM {
+  align-self: flex-start;
+  /* margin-left: 8%; */
+}
+footer h3 {
+  width: fit-content;
+  margin-bottom: 40px;
+  position: relative;
+}
 footer .social_ico {
   position: relative;
   display: flex;
@@ -1581,6 +1598,10 @@ footer .wave#wave4 {
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
   margin: 30px;
 }
+
+
+
+
 
 /* ################### msg Notification ##########################   */
 .toast {
