@@ -464,7 +464,7 @@ ul.social {
   bottom: 30px;
   left: 50%;
   transform: translateX(-50%);
-} 
+}
 .img-slider .navigation .btn {
   background: rgba(255, 255, 255, 0.5);
   width: 12px;
@@ -824,7 +824,7 @@ span.text {
 }
 .contentBox {
   position: relative;
-  width: 535px;
+  width: 100%;
   height: auto;
   background: #fff;
   border-radius: 20px;
@@ -1508,24 +1508,29 @@ footer {
   color: wheat;
 }
 footer .row {
-  width: 85%;
-  margin:auto;
+  /* width: 85%;
+  margin: auto;
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
-  justify-content: space-between;
+  justify-content: space-between; */
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
-footer .col {
+/* footer .col {
   flex-basis: 25%;
   padding: 10px;
-}
+} */
 footer .LogoM {
   align-self: flex-start;
+  width: 100%;
   /* margin-left: 8%; */
 }
 footer h3 {
   width: fit-content;
-  margin-bottom: 40px;
+  margin-bottom: 10px;
   position: relative;
 }
 footer .social_ico {
@@ -1533,6 +1538,33 @@ footer .social_ico {
   display: flex;
   justify-content: center;
   margin: 10px 0;
+}
+
+.links__footer .col ul {
+  display: flex;
+  flex-direction: column;
+}
+@media (min-width: 981px) {
+  footer .row .col__info{
+    width: 50%;
+  }
+  footer .LogoM {
+    align-self: flex-start;
+    width: 70%;
+    /* margin-left: 8%; */
+  }
+  footer .row {
+    width: 100%;
+    display: flex;
+    /* flex-direction: row; */
+    justify-content: center;
+  }
+  .links__footer .col ul {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
 }
 
 footer .wave {
@@ -1568,6 +1600,11 @@ footer .wave#wave4 {
   bottom: 20px;
   animation: animateWave02 3s linear infinite;
 }
+.links__footer{
+  display: flex;
+  flex-wrap: wrap;
+}
+
 @keyframes animateWave {
   0% {
     background-position-x: 1000px;
@@ -1598,10 +1635,6 @@ footer .wave#wave4 {
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
   margin: 30px;
 }
-
-
-
-
 
 /* ################### msg Notification ##########################   */
 .toast {
