@@ -3,9 +3,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;900&display=swap");
 :root {
   --color-primary: #0075ff;
-  --color-scondaire: #fffa66;
+  /* Fixed typo: scondaire -> secondaire */
+  --color-secondaire: #fffa66;
   --bg-color: #f8f6f6;
-  --color-griy: #f8f6f6;
+  /* Fixed typo: griy -> gris (or grey) */
+  --color-gris: #f8f6f6;
 }
 * {
   margin: 0;
@@ -23,7 +25,7 @@ a {
 }
 
 body {
-  height: 1000vh;
+  height: 1000vh; /* Note: This is unusually large, likely for scroll testing */
   overflow-x: hidden;
   scroll-behavior: smooth;
   /* background-color: #e3e9f7; */
@@ -37,7 +39,8 @@ body {
 ::-webkit-scrollbar-track {
   background-color: #fffa66;
 }
-/* ::-webkit-scrollbar-track { */
+/* Removed redundant commented-out scrollbar-track */
+
 /* ########### progress ###########*/
 #progress {
   position: fixed;
@@ -119,11 +122,11 @@ body {
   background: #33479d;
   top: 0px;
   position: sticky;
-  border-top: 5px solid #fffa66;
+  border-top: 5px solid #fffa66; /* Uses var(--color-secondaire) */
   z-index: 113;
 }
 .sec-head2.bg-dark {
-  background: #33469dd3;
+  background: #33469dd3; /* RRGGBBAA format, likely intentional */
 }
 .sec-head2.bg-dark .head2 .logo a img {
   width: 60px;
@@ -135,7 +138,6 @@ body {
   align-items: center;
   justify-content: space-between;
   gap: 10px;
-  align-items: center;
   /* padding: 7px 150px; */
   padding: 7px 0;
   width: 80%;
@@ -147,9 +149,9 @@ body {
 .sec-head2 .head2 .logo a {
   display: flex;
 }
-.links.active {
-  left: -951px;
-}
+
+/* Removed .links.active { left: -951px; } as it seemed to conflict or be unused 
+   with the .act class logic for the mobile menu. The .act class handles visibility. */
 
 .sec-head2 .head2 .links,
 .sec-head2 .head2 .links ul {
@@ -165,7 +167,7 @@ body {
 }
 .sec-head2 .head2 .links ul a.activee,
 .sec-head2 .head2 .links ul a:hover {
-  color: #fffa66;
+  color: #fffa66; /* Uses var(--color-secondaire) */
 }
 .sec-head2.bg-dark .head2 .links ul a::before {
   bottom: -4px;
@@ -178,8 +180,6 @@ body {
   bottom: -8px;
   left: 50%;
   transform: translateX(-50%);
-  /* background: linear-gradient(40deg, #8470f5, #dbd35f); */
-  /* background: linear-gradient(40deg, #e9ce5f, #fffa66); */
   background: linear-gradient(40deg, #e9ce5f, #f4ff67);
   border-radius: 10px;
   transition: width 0.5s;
@@ -231,7 +231,7 @@ body {
     width: 90%;
   }
   .sec-head2 .head2 .links ul {
-    display: flex;
+    /* display: flex; */ /* Already flex by default */
     align-items: center;
     gap: 10px;
   }
@@ -241,8 +241,8 @@ body {
 }
 @media only screen and (max-width: 1000px) {
   .sec-head2 .head2 {
-    width: 90%;
-    padding: 10px 20px;
+    width: 90%; /* This was already set in max-width: 1270px, ensure it's the desired value */
+    padding: 10px 20px; /* Overrides previous padding more specifically */
   }
   .head2 .header-right {
     display: block;
@@ -252,36 +252,31 @@ body {
     margin: 0;
     position: absolute;
     top: 100%;
-    left: 0px;
-    /* width: 280px; */
+    left: 0px; /* Changed from -951px for .active to standard positioning for .act */
     width: 100%;
     justify-content: center;
     height: fit-content;
     background-color: rgba(51, 70, 157, 0.827);
     box-shadow: 2px 0 20px 0 rgba(0, 0, 0, 0.05);
     padding: 30px;
-    transition: 0.3s;
+    transition: 0.3s; /* This was already in *, can be more specific if needed */
     text-align: center;
-    z-index: -1;
-    display: none;
+    z-index: -1; /* Ensures it's behind content if overlapping, but sticky header has higher z-index */
+    display: none; /* Initially hidden */
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
-    /* transition: ease-in-out 0.5s; */
-    /* color: #e3e9f7; */
-    /* opacity: 0; */
   }
   .sec-head2 .head2 .links.act {
-    display: flex;
+    /* This class is toggled by JS */
+    display: flex; /* Show the menu */
   }
   .sec-head2 .head2 .links.act a {
+    /* Styles for links when menu is active */
     color: #fff;
     font-size: 27px;
   }
-  /* .head2 .header-left nav.act {
-    top: 70px;
-  } */
   .sec-head2 .head2 .links ul {
-    display: block;
+    display: block; /* Override display:flex for vertical stacking of li */
   }
   .sec-head2 .head2 .links ul li:not(:last-child) {
     margin-bottom: 12px;
@@ -292,6 +287,7 @@ body {
 }
 
 @media only screen and (max-width: 500px) {
+  /* Add specific styles if needed */
 }
 /* ########## soc ######### */
 ul.social {
@@ -344,22 +340,21 @@ ul.social {
 .social li:nth-child(2) a span:nth-child(2) {
   background: #e4405f;
 }
-/* twitter */
+/* twitter (icon is YouTube, color is red) */
 .social li:nth-child(3) a span:nth-child(1),
 .social li:nth-child(3) a span:nth-child(2) {
-  /* background: #171515; */
-  background: #ff0303;
+  background: #ff0303; /* YouTube red */
 }
-/* GitHub */
+/* GitHub (icon is WhatsApp, color is green) */
 .social li:nth-child(4) a span:nth-child(1),
 .social li:nth-child(4) a span:nth-child(2) {
-  background: #16ff00;
+  background: #16ff00; /* WhatsApp green */
 }
 /* Linkedin */
-.social li:nth-child(5) a span:nth-child(1),
+/* .social li:nth-child(5) a span:nth-child(1),
 .social li:nth-child(5) a span:nth-child(2) {
   background: #0a66c2;
-}
+} */
 /* ########## Media ######### */
 
 @media (max-width: 1512px) {
@@ -376,8 +371,10 @@ ul.social {
 }
 
 @media (max-width: 991px) {
+  /* Add specific styles if needed */
 }
 @media (min-width: 600px) {
+  /* Add specific styles if needed */
 }
 
 /* .slide {
@@ -390,7 +387,6 @@ ul.social {
   position: relative;
   width: 95%;
   height: 710px;
-  /* min-height: 70vh; */
   overflow: hidden;
   border-radius: 10px;
   margin: 10px auto;
@@ -411,32 +407,16 @@ ul.social {
 }
 
 .img-slider .slide img {
-  /* z-index: 1;
   border-radius: 5px;
   width: 100%;
-  height: 650px;
-  object-fit: cover; */
-  /* z-index: 1;
-  border-radius: 5px;
-  width: 100%;
-  min-height: 86vh;
-  height: auto; */
-  /* object-fit: cover; */
-  border-radius: 5px;
-  width: 100%;
-
-  /* min-height: 74vh; */
   height: 710px;
-  /* object-fit: cover; */
+  object-fit: cover; /* Added for better image scaling if aspect ratio differs */
   filter: brightness(0.8);
 }
 
 .img-slider .slide .info {
   position: absolute;
   top: 0;
-  /* top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%); */
   padding: 15px 30px;
 }
 
@@ -491,7 +471,7 @@ ul.social {
     height: 375px;
   }
   .img-slider .slide img {
-    height: 376px;
+    height: 376px; /* Slight mismatch, consider making them same 375px */
   }
 
   .img-slider .slide .info {
@@ -523,7 +503,7 @@ ul.social {
     height: 250px;
   }
   .img-slider .slide img {
-    height: 251px;
+    height: 251px; /* Slight mismatch, consider making them same 250px */
   }
   .img-slider .slide .info {
     padding: 10px 20px;
@@ -575,36 +555,29 @@ ul.social {
 }
 
 /* ##################################### Scroll Animations ##################################### */
-
+/* These classes are used by ScrollReveal JS, not directly for this old .hidden/.show example */
 .hidden {
+  /* This seems to be a general utility class, not the ScrollReveal one */
   opacity: 0;
   filter: blur(5px);
   transform: translateX(-100%);
   transition: all 1s;
 }
 .show {
+  /* This seems to be a general utility class, not the ScrollReveal one */
   opacity: 1;
   filter: blur(0);
   transform: translateX(0);
 }
-
-/* EXEMPLE */
-/* .logo:nth-child(2) {
-  transition-delay: 200s;
+/* In style.css */
+#serv,
+#pedagogie-section,
+#galerie-section,
+#contact-section,
+#recrutement-section {
+  scroll-margin-top: 85px; /* EXAMPLE VALUE - REPLACE with your measured header height + a bit */
 }
-.logo:nth-child(3) {
-  transition-delay: 400s;
-}
 
-.logo:nth-child(4) {
-  transition-delay: 600s;
-} */
-
-/* @media (prefers-reduced-motion) {
-  .hidden {
-    transition: none;
-  }
-} */
 /* ############################### container ###############################*/
 .container {
   padding-right: 15px;
@@ -637,17 +610,6 @@ ul.social {
   .container {
     width: 1320px;
   }
-  /* .sec-head2 .head2 {
-    width: 90%;
-  }
-  .sec-head2 .head2 .links ul {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  .sec-head2 .head2 .links ul a {
-    font-size: 15px;
-  } */
 }
 
 /* ############################### CONTENT ################################# */
@@ -675,12 +637,10 @@ ul.social {
 
 .Service-Scolaire {
   text-align: center;
-  /* background: #0075ff url(imgs/bgimg.png); */
-  background: rgba(0, 0, 0, 0.7) url(../imgs/bgimg.png);
+  background: rgba(0, 0, 0, 0.7) url(../imgs/bgimg.png); /* Ensure path is correct */
   background-blend-mode: darken;
-  /* background-size: cover; */
-  /* position: absolute; */
-  width: 100vw;
+  /* background-size: cover; */ /* Consider adding for responsiveness */
+  width: 100vw; /* This will extend beyond .container if .container is narrower */
   margin-top: 4rem;
   padding: 20px 20px 80px 20px;
 }
@@ -727,9 +687,9 @@ span.text {
   color: #e0e0e0;
   font-size: 1em;
   text-align: center;
-  pad: 0.7em 0;
+  padding: 0.7em 0; /* Corrected: 'pad' to 'padding' */
   font-weight: 400;
-  line-height: 0;
+  line-height: 0; /* This might make text hard to read if not intended */
 }
 @media screen and (max-width: 1024px) {
   .wrapper {
@@ -768,7 +728,7 @@ span.text {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   grid-gap: 10px;
-  justify-content: center;
+  justify-content: center; /* Aligns grid items if total width is less than container */
   margin-bottom: 3rem;
 }
 .wrapper-pedagogie a {
@@ -782,12 +742,11 @@ span.text {
 .wrapper-pedagogie h3 {
   margin: 10px 0;
 }
-@media (max-width: 767px) {
-}
+
 .pedagogie > h1 {
   text-align: center;
   margin-top: 3rem;
-  margin-bottom: 1rem;
+  /* margin-bottom: 1rem; */ /* Duplicate, already set below */
   font-size: 3rem;
   color: #2696e9;
   font-weight: bolder;
@@ -797,44 +756,41 @@ span.text {
 .wrapper-pedagogie .box {
   text-align: center;
   background: #cfc;
-  width: fit-content;
+  width: fit-content; /* Box will only be as wide as its content */
   padding: 15px;
   border-radius: 5px;
-  margin-bottom: 9px;
+  margin: 0 auto 9px auto; /* Added auto margins for centering if grid column is wider */
 }
 .wrapper-pedagogie .box img {
   width: 100%;
   display: block;
+  border-radius: 5px;
 }
 .wrapper-pedagogie .box p {
   width: 100%;
-  /* width: 284px; */
 }
-.wrapper-pedagogie .box img {
-  border-radius: 5px;
-}
-/* ######################### POPUP SHOW ###############"############## */
+
+/* ######################### POPUP SHOW ############################ */ /* Fixed extra quote */
 .popup {
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   display: none;
-  z-index: 1111111111111;
+  z-index: 1111111111111; /* Very high z-index */
 }
 .contentBox {
   position: relative;
-  width: 100%;
+  width: 100%; /* Consider setting a max-width */
   height: auto;
   background: #fff;
   border-radius: 20px;
-  justify-content: center;
-  align-items: center;
+  /* justify-content: center; */ /* Not needed if imgBx is 100% width */
+  /* align-items: center; */ /* Not needed if imgBx is 100% width */
   padding: 12px;
-  display: flex;
+  display: flex; /* Can be removed if imgBx is the only child and block */
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   overflow: hidden;
-  /* background: #000; */
 }
 .close {
   position: absolute;
@@ -842,18 +798,23 @@ span.text {
   right: 20px;
   width: 40px;
   height: 40px;
-  background: #f3f3f3 url(../imgs/close.png);
+  background: #f3f3f3 url(../imgs/close.png); /* Ensure path is correct */
   background-position: center;
-  background-size: 10px;
+  background-size: 10px; /* Adjust if icon looks too small/large */
   border-radius: 50%;
   background-repeat: no-repeat;
   cursor: pointer;
-  z-index: 1111;
+  z-index: 1111; /* Ensure it's above .imgBx if overlapping */
 }
 .contentBox .imgBx,
 .contentBox img {
+  /* This targets both .imgBx and any direct img child of .contentBox */
   width: 100%;
   border-radius: 8px;
+}
+.contentBox .imgBx img {
+  /* More specific if img is inside .imgBx */
+  display: block; /* Removes potential bottom space from img */
 }
 
 /* ################## nos-partenaire ###################### */
@@ -869,16 +830,17 @@ span.text {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-wrap: wrap; /* Added for responsiveness */
 }
 .nos-partenaire .partenaires img {
   width: 27%;
+  min-width: 150px; /* Example: prevent images from becoming too small */
+  margin: 10px; /* Added for spacing */
 }
 
 /* ################################### GALERIE #################################### */
 
-li {
-  list-style: none;
-}
+/* li { list-style: none; } Already in * reset */
 .galerie {
   text-align: center;
   margin-top: 3rem;
@@ -890,6 +852,7 @@ li {
   color: #e84545;
 }
 .container-gal {
+  /* This class is on <section> */
   padding: 10px;
   width: 100%;
   display: flex;
@@ -898,14 +861,16 @@ li {
   flex-direction: column;
   margin: 0px auto;
 }
-.container-gal ul {
+.container-gal ul.gallery {
+  /* Target ul with class gallery */
   display: flex;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
   margin-bottom: 20px;
 }
-.container-gal ul li {
+.container-gal ul.gallery li {
+  /* Target li inside ul.gallery */
   letter-spacing: 1px;
   padding: 5px 15px;
   cursor: pointer;
@@ -915,12 +880,13 @@ li {
   font-weight: bold;
   font-size: 15px;
 }
-.container-gal ul li.active-gal {
+.container-gal ul.gallery li.active-gal {
   border-color: #c70039;
   color: #e84545;
 }
 
 .product {
+  /* This class is on the div containing itembox elements */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -930,10 +896,10 @@ li {
   position: relative;
   width: 425px;
   border-radius: 6px;
-  overflow: hidden;
+  overflow: hidden; /* Important for scale animation if children overflow */
   height: 300px;
   margin: 5px;
-  display: block;
+  display: block; /* Or flex/grid depending on content */
 }
 .product .itembox img {
   position: absolute;
@@ -957,23 +923,29 @@ li {
 @keyframes hide {
   0% {
     transform: scale(1);
+    opacity: 1;
   }
   100% {
     transform: scale(0);
-    width: 0;
-    height: 0;
-    margin: 0;
+    opacity: 0;
+    width: 0; /* May not be necessary if scale(0) is enough */
+    height: 0; /* May not be necessary */
+    margin: 0; /* May not be necessary */
+    /* display: none; /* If you need it to not take up space after animation */
   }
 }
 @keyframes show {
   0% {
     transform: scale(0);
-    width: 0;
-    height: 0;
-    margin: 0;
+    opacity: 0;
+    /* width: 0; */ /* Ensure consistent with hide if used */
+    /* height: 0; */
+    /* margin: 0; */
   }
   100% {
     transform: scale(1);
+    opacity: 1;
+    /* Potentially restore original width, height, margin if changed in hide */
   }
 }
 
@@ -983,12 +955,14 @@ li {
     height: 250px;
   }
 }
-/* ##############################" ROBOT ################################## */
+/* ##############################" ROBOT ################################## */ /* Typo in comment "ROBOT" */
 .galerie .more-img {
+  /* This is a link styled as a button */
   padding: 10px 30px;
   border-radius: 8px;
   display: inline-block;
   background: aquamarine;
+  /* Consider styling it like .buttonA if consistency is desired */
 }
 
 /* ############################### Contact US ############################# */
@@ -1000,7 +974,7 @@ li {
   min-height: 60vh;
   flex-direction: column;
   padding: 20px;
-  background: #0075ff;
+  background: #0075ff; /* var(--color-primary) */
   position: relative;
 }
 .ContactUs > h1 {
@@ -1008,7 +982,7 @@ li {
   text-transform: uppercase;
   color: #16ff00;
   margin-bottom: 20px;
-  z-index: 1;
+  z-index: 1; /* Above ::after pseudo-element */
 }
 .ContactUs::after {
   content: "";
@@ -1018,26 +992,26 @@ li {
   width: 50%;
   height: 100%;
   background: #fff38e;
+  z-index: 0; /* Ensure it's behind content */
 }
 .container-contact {
   position: relative;
   min-width: 1100px;
-  min-height: 594px;
+  min-height: 594px; /* Specific height */
   display: flex;
-  z-index: 1;
-  /* backgrocontainer-contactund: #fff; */
+  z-index: 1; /* Above ContactUs::after */
 }
 
 .container-contact .contactInfo {
   position: absolute;
   top: 40px;
   width: 350px;
-  height: calc(100% - 80px);
-  z-index: 1;
-  background: #0075ff;
+  height: calc(100% - 80px); /* Relative to parent's height */
+  z-index: 1; /* Above contactForm if overlapping during transition/layout */
+  background: #0075ff; /* var(--color-primary) */
   padding: 40px;
   display: flex;
-  justify-content: center;
+  /* justify-content: center; */ /* Removed, space-between handles it */
   justify-content: space-between;
   flex-direction: column;
   box-shadow: 0 20px 25px rgba(0, 0, 0, 0.15);
@@ -1071,46 +1045,44 @@ li {
   color: #fff;
   margin-left: 10px;
   font-weight: 300;
-  transition: 0.5s ease;
+  transition: 0.5s ease; /* This was already in * */
 }
 .container-contact .contactInfo ul.info li span:nth-child(2) a {
   margin-left: 0;
 }
 /* .container-contact .contactInfo ul.info li span:nth-child(2):hover {
-  color: #fff38e;
+  color: #fff38e; // Consider var(--color-secondaire) or similar
   text-decoration: underline;
 } */
 .container-contact .contactInfo ul.sci {
   position: relative;
   display: flex;
   align-items: center;
-  /* gap: 15px; */
 }
 .container-contact .contactInfo ul.sci li {
   margin-right: 15px;
 }
 .container-contact .contactInfo ul.sci li a img {
-  text-decoration: none;
-}
-.container-contact .contactInfo ul.sci li a img {
+  /* Target img inside a */
+  /* text-decoration: none; */ /* Not applicable to img */
   width: 25px;
   filter: invert(1);
-  transition: 0.5s ease;
+  transition: 0.5s ease; /* This was already in * */
 }
 .container-contact .contactInfo ul.sci li a img:hover {
-  color: #f8ed8a;
+  /* color: #f8ed8a; */ /* filter: brightness() or opacity might be better for image hover */
   scale: 1.2;
   transform: translateY(-5px);
 }
 .contactForm > h2 {
-  text-transform: none;
+  text-transform: none; /* Already set by * selector, but explicit override is fine */
 }
 .container-contact .contactForm {
   position: absolute;
   padding: 70px 50px;
-  padding-left: 250px;
-  margin-left: 150px;
-  width: calc(100% - 150px);
+  padding-left: 250px; /* Space for contactInfo to "peek" or overlap */
+  margin-left: 150px; /* Shifts form right, allowing contactInfo to be on left */
+  width: calc(100% - 150px); /* Width of form considering its margin-left */
   height: 100%;
   background: #fff;
   box-shadow: 0 50px 50px rgba(0, 0, 0, 0.25);
@@ -1157,7 +1129,7 @@ li {
   pointer-events: none;
   font-size: 18px;
   font-weight: 300;
-  transition: 0.3s;
+  transition: 0.3s; /* Already in * */
 }
 
 .container-contact .contactForm .formBox .inputBox input:focus ~ span,
@@ -1166,27 +1138,27 @@ li {
 .container-contact .contactForm .formBox .inputBox textarea:valid ~ span {
   transform: translateY(-21px);
   font-size: 12px;
-  font-weight: 400;
+  /* font-weight: 400; */ /* Overridden by 500 below */
   letter-spacing: 1px;
-  color: #0075ff;
+  color: #0075ff; /* var(--color-primary) */
   font-weight: 500;
 }
 
 .container-contact .contactForm .formBox .inputBox input[type="submit"] {
   position: relative;
   cursor: pointer;
-  background: #0075ff;
+  background: #0075ff; /* var(--color-primary) */
   color: #fff;
   border: none;
   max-width: 150px;
   padding: 12px;
-  transition: 0.5s ease-in-out;
+  transition: 0.5s ease-in-out; /* Already in * */
   border-radius: 3px;
 }
 
 .container-contact .contactForm .formBox .inputBox input[type="submit"]:hover {
   opacity: 0.9;
-  color: #f8ed8a;
+  color: #f8ed8a; /* Consider var(--color-secondaire) */
 }
 
 @media (max-width: 1200px) {
@@ -1194,46 +1166,73 @@ li {
     width: 90%;
     min-width: auto;
     margin: 20px;
-    /* box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2); */
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
   }
   .container-contact .contactInfo {
-    position: relative;
-    top: 0;
-    height: 550px;
-    /* box-shadow: none; */
+    /* position: relative; */ /* This makes it part of normal flow, not absolute */
+    top: 0; /* No effect if position is relative */
+    height: 550px; /* Fixed height */
+    /* box-shadow: none; */ /* If you want to remove the shadow inherited */
   }
   .container-contact .contactForm {
-    position: relative;
-    padding-left: 0px;
-    margin-left: 0;
+    /* position: relative; */ /* This makes it part of normal flow */
+    padding-left: 0px; /* No offset needed if contactInfo is not absolute next to it */
+    margin-left: 0; /* No offset needed */
     padding: 40px;
-    width: calc(100% - 350px);
+    width: calc(
+      100% - 350px
+    ); /* If contactInfo still takes 350px width in flex row */
     height: 550px;
+  }
+  /* If .contactInfo and .contactForm become flex children, width needs adjustment for them to be side-by-side */
+  /* The original had contactInfo absolute and contactForm absolute but shifted. */
+  /* This media query makes them both relative, which might break the side-by-side unless display:flex is on .container-contact */
+  /* Assuming the intention is for them to stack or be side-by-side with flex on .container-contact: */
+  .container-contact {
+    display: flex; /* Add this if they should be side-by-side */
+    /* flex-direction: column; is handled by max-width: 991px */
+  }
+  .container-contact .contactInfo {
+    position: relative; /* Overrides absolute */
+    width: 350px; /* Explicit width */
+  }
+  .container-contact .contactForm {
+    position: relative; /* Overrides absolute */
+    width: calc(100% - 350px); /* Remaining width */
   }
 }
 
 @media (max-width: 991px) {
   .ContactUs {
-    background: #fff38e;
+    background: #fff38e; /* var(--color-secondaire) with a bit more yellow */
   }
   .ContactUs::before {
+    /* Refers to a pseudo-element that's not defined, perhaps meant ::after */
+    display: none;
+  }
+  .ContactUs::after {
+    /* If this is the one to hide */
     display: none;
   }
   .container-contact {
     display: flex;
-    flex-direction: column-reverse;
+    flex-direction: column-reverse; /* Stacks form above info */
   }
   .container-contact .contactInfo,
   .container-contact .contactForm {
-    width: 100%;
-    height: auto;
+    width: 100%; /* Full width when stacked */
+    height: auto; /* Adjust height to content */
+    position: relative; /* Ensure no absolute positioning interferes */
+    margin-left: 0;
+    padding-left: 40px; /* Consistent padding */
   }
   .container-contact .contactInfo {
-    flex-direction: row;
+    flex-direction: row; /* For content within contactInfo if needed, or remove if not */
+    /* align-items: center; */ /* if flex-direction is row */
+    /* justify-content: space-around; */ /* if flex-direction is row */
   }
   .container-contact .contactInfo ul.sci {
-    position: relative;
+    /* position: relative; */ /* Already relative */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -1242,17 +1241,18 @@ li {
 @media (max-width: 600px) {
   .container-contact .contactInfo,
   .container-contact .contactForm {
-    padding: 25px;
+    padding: 25px; /* Reduce padding */
   }
   .container-contact .contactInfo {
-    flex-direction: column;
-    align-items: flex-start;
+    flex-direction: column; /* Stack items within contactInfo vertically */
+    align-items: flex-start; /* Align items to the start */
   }
   .container-contact .contactInfo ul.sci {
     margin-top: 40px;
+    justify-content: flex-start; /* Align social icons to start */
   }
   .container-contact .contactForm .formBox .inputBox.w50 {
-    width: 100%;
+    width: 100%; /* Stack form inputs */
   }
 }
 
@@ -1261,10 +1261,11 @@ li {
   margin: 50px auto;
   overflow: hidden;
   border-radius: 20px;
-  z-index: 1;
+  z-index: 1; /* Ensure it's above any background elements if needed */
 }
 .maps iframe {
   width: 100%;
+  display: block; /* Remove potential bottom space */
 }
 /* ################################## RECRUTEMENT ###################### */
 .recrutement {
@@ -1306,6 +1307,8 @@ li {
 }
 .input-box label {
   color: #333;
+  display: block; /* Ensure label is on its own line if desired */
+  margin-bottom: 3px; /* Space between label and input */
 }
 .form :where(.input-box input, .input-box textarea, .select-box) {
   position: relative;
@@ -1320,10 +1323,12 @@ li {
   padding: 0 15px;
 }
 .input-box textarea {
+  /* Specific height for textarea */
   height: 100px;
+  padding: 10px 15px; /* Add vertical padding for textarea */
 }
 .input-box input:focus {
-  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1); /* Subtle focus effect */
 }
 .form .column {
   display: flex;
@@ -1357,6 +1362,7 @@ li {
   color: #707070;
 }
 .address :where(input, .select-box) {
+  /* Assuming .address is a class on an .input-box or parent */
   margin-top: 15px;
 }
 .select-box select {
@@ -1366,24 +1372,36 @@ li {
   border: none;
   color: #707070;
   font-size: 1rem;
+  background-color: transparent; /* Ensure select bg is consistent */
+  padding: 0 15px; /* Add padding to select */
+}
+.select-box {
+  /* Style the container of select if needed */
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  position: relative; /* For custom arrow if added */
 }
 
 .cv {
-  padding: 10px;
-  display: flex;
-  /* justify-content: center; */
-  align-items: center;
-  position: relative;
-  /* width: 100%; */
+  /* This class is on the input type="file" */
+  padding: 10px; /* This padding might look odd on an input file */
+  /* display: flex; */ /* Not typical for input file styling */
+  /* align-items: center; */
+  /* position: relative; */
+  /* width: 100%; */ /* Already set by general rule */
 }
 ::-webkit-file-upload-button {
   outline: none;
   border: none;
-  padding: 6px;
+  padding: 10px 15px; /* Adjusted padding */
   border-radius: 8px;
   cursor: pointer;
+  background-color: #eee; /* Example background */
+  color: #333; /* Example text color */
+  margin-right: 10px; /* Space between button and "no file chosen" text */
 }
 .form button {
+  /* Submit button */
   height: 55px;
   width: 100%;
   color: #fff;
@@ -1392,11 +1410,12 @@ li {
   margin-top: 30px;
   border: none;
   cursor: pointer;
-  transition: all 0.2s ease;
-  background: #0075ff;
+  transition: all 0.2s ease; /* Already in * */
+  background: #0075ff; /* var(--color-primary) */
+  border-radius: 6px; /* Added for consistency */
 }
 .form button:hover {
-  background: #2b8eff;
+  background: #2b8eff; /* Slightly lighter blue */
 }
 /*Responsive*/
 @media screen and (max-width: 500px) {
@@ -1406,10 +1425,15 @@ li {
   .form :where(.gender-option, .gender) {
     row-gap: 15px;
   }
+  .form .column .input-box {
+    /* Ensure input boxes in columns take full width when wrapped */
+    width: 100%;
+  }
 }
 
 /* ############################## BUTTON ################################### */
 .buttonA {
+  /* This is the "More" button in gallery */
   position: relative;
   padding: 15px 40px;
   margin-top: 10px;
@@ -1417,7 +1441,7 @@ li {
   border: none;
   color: #fff;
   cursor: pointer;
-  background-color: #3586ff;
+  background-color: #3586ff; /* var(--color-primary) slightly different */
   transition: all 0.2s ease;
   font-size: 15px;
 }
@@ -1432,10 +1456,11 @@ li {
   left: 50%;
   height: 100%;
   transform: translateX(-50%);
-  z-index: -1000;
+  z-index: -1000; /* Ensure it's behind the button text */
   background-repeat: no-repeat;
 }
 .buttonA.animate::before {
+  /* Class .animate needs to be added by JS to trigger */
   top: -70%;
   background-image: radial-gradient(circle, #3586ff 20%, transparent 20%),
     radial-gradient(circle, transparent 20%, #3586ff 20%, transparent 30%),
@@ -1448,7 +1473,7 @@ li {
     radial-gradient(circle, #3586ff 20%, transparent 20%);
   background-size: 10% 10%, 20% 20%, 15% 15%, 20% 20%, 18% 18%, 10% 10%, 15% 15%,
     10% 10%, 18% 18%;
-  animation: greentopBubbles ease-in-out 0.6s forwards infinite;
+  animation: greentopBubbles ease-in-out 0.6s forwards infinite; /* Infinite might not be desired if it should be one-shot */
 }
 @keyframes greentopBubbles {
   0% {
@@ -1462,10 +1487,11 @@ li {
   100% {
     background-position: 0% 70%, 0% 10%, 10% 30%, 20% -10%, 30% 20%, 22% 40%,
       50% 40%, 65% 10%, 90% 20%;
-    background-size: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
+    background-size: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%; /* Makes bubbles disappear */
   }
 }
 .buttonA.animate::after {
+  /* Class .animate needs to be added by JS */
   bottom: -70%;
   background-image: radial-gradient(circle, #3586ff 20%, transparent 20%),
     radial-gradient(circle, #3586ff 20%, transparent 20%),
@@ -1475,7 +1501,7 @@ li {
     radial-gradient(circle, #3586ff 20%, transparent 20%),
     radial-gradient(circle, #3586ff 20%, transparent 20%);
   background-size: 15% 15%, 20% 20%, 18% 18%, 20% 20%, 15% 15%, 20% 20%, 18% 18%;
-  animation: greenbottomBubbles ease-in-out 0.6s forwards infinite;
+  animation: greenbottomBubbles ease-in-out 0.6s forwards infinite; /* Infinite might not be desired */
 }
 @keyframes greenbottomBubbles {
   0% {
@@ -1489,14 +1515,14 @@ li {
   100% {
     background-position: 0% 90%, 20% 90%, 45% 70%, 60% 110%, 75% 80%, 95% 70%,
       110% 10%;
-    background-size: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
+    background-size: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%; /* Makes bubbles disappear */
   }
 }
 /* ##################################### FOOTER ################################## */
 footer {
   position: relative;
   width: 100%;
-  background: #3586ff;
+  background: #3586ff; /* var(--color-primary) slightly different */
   min-height: 222px;
   margin-top: 10rem;
   padding: 20px 50px;
@@ -1505,77 +1531,148 @@ footer {
   align-items: center;
   flex-direction: column;
   gap: 15px;
-  color: wheat;
+  color: wheat; /* Light color for text on dark background */
 }
 footer .row {
-  /* width: 85%;
-  margin: auto;
+  width: 100%; /* Takes full width of footer padding box */
+  max-width: 1200px; /* Example: constrain content width */
+  margin: auto; /* Center the row if max-width is applied */
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: wrap; /* Allow columns to wrap */
   align-items: flex-start;
-  justify-content: space-between; */
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+  justify-content: space-between; /* Distribute space between columns */
+  gap: 20px; /* Replaces .col padding for spacing */
 }
-/* footer .col {
-  flex-basis: 25%;
-  padding: 10px;
-} */
+/* footer .col { */ /* Replaced by direct styling on .col__info and .links__footer */
+/* flex-basis: 25%; */ /* Example: 4 columns */
+/* padding: 10px; */
+/* } */
 footer .LogoM {
-  align-self: flex-start;
-  width: 100%;
-  /* margin-left: 8%; */
+  /* Class for the logo image */
+  /* align-self: flex-start; */ /* Not needed if parent .col__info handles alignment */
+  width: 100%; /* Full width of its container */
+  max-width: 200px; /* Example: constrain logo size */
+  /* margin-left: 8%; */ /* Remove if using flexbox gap/padding for spacing */
+  margin-bottom: 15px; /* Space below logo */
 }
 footer h3 {
   width: fit-content;
   margin-bottom: 10px;
   position: relative;
+  color: #fff; /* Ensure heading is visible */
 }
 footer .social_ico {
+  /* This class is not used in the provided HTML */
   position: relative;
   display: flex;
   justify-content: center;
   margin: 10px 0;
 }
 
+.links__footer {
+  /* Container for link columns */
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; /* Space between link columns */
+  flex-grow: 1; /* Allow it to take available space */
+}
+.links__footer .col {
+  /* Each column of links */
+  flex-basis: calc(
+    50% - 10px
+  ); /* Example: two columns of links, adjust as needed */
+  min-width: 150px; /* Prevent columns from becoming too narrow */
+}
 .links__footer .col ul {
   display: flex;
   flex-direction: column;
+  gap: 8px; /* Space between links */
 }
+.links__footer .col ul li a {
+  color: wheat; /* Ensure links are visible */
+}
+.links__footer .col ul li a:hover {
+  color: #fff; /* Brighter on hover */
+  text-decoration: underline;
+}
+
+footer .row .col__info {
+  /* Specific column for info/logo */
+  flex-basis: 40%; /* Example width */
+  min-width: 250px;
+}
+
 @media (min-width: 981px) {
-  footer .row .col__info{
-    width: 50%;
-  }
-  footer .LogoM {
+  /* These styles are largely covered by the flexbox setup above, adjust as needed */
+  /* footer .row .col__info{
+    width: 50%; // Overridden by flex-basis
+  } */
+  /* footer .LogoM {
     align-self: flex-start;
     width: 70%;
-    /* margin-left: 8%; */
-  }
-  footer .row {
+  } */
+  /* footer .row {
     width: 100%;
     display: flex;
-    /* flex-direction: row; */
     justify-content: center;
-  }
-  .links__footer .col ul {
+  } */
+  /* .links__footer .col ul {
     display: flex;
     gap: 20px;
     flex-wrap: wrap;
-  }
-
+  } */
 }
 
 footer .wave {
   position: absolute;
-  top: -100px;
+  top: -100px; /* Position wave above footer background */
   left: 0;
   width: 100%;
   height: 100px;
-  background: url(../imgs/wave.png);
-  background-size: 1000px 100px;
+  background: url(../imgs/wave.png); /* Ensure path is correct */
+  background-size: 1000px 100px; /* Ensure this matches wave image aspect */
 }
+footer .wave#wave1 {
+  z-index: 100; /* Wave layer order */
+  opacity: 1;
+  bottom: 0; /* This will override top: -100px if not careful with specificity or !important */
+  /* If waves are at the bottom of the footer visual, not top:
+     top: auto; bottom: 0;
+     If waves are meant to be the transition from page content to footer:
+     top: -100px; is correct for extending upwards from footer's actual top.
+     Then bottom: 0; etc. for wave#wave1, wave#wave2... would be relative to footer itself, meaning they are at the very bottom edge of the footer, not at the top transition.
+     Assuming wave is the top edge of footer:
+  */
+  animation: animateWave 4s linear infinite;
+}
+/* Correcting wave positioning if they are meant to be the top visual border of the footer */
+footer .wave#wave1 {
+  z-index: 1000;
+  opacity: 1;
+  animation: animateWave 4s linear infinite;
+}
+footer .wave#wave2 {
+  z-index: 999;
+  opacity: 0.5;
+  top: -100px; /* adjust based on wave shape */
+  animation: animateWave02 4s linear infinite;
+} /* Example: if wave2 starts slightly offset */
+footer .wave#wave3 {
+  z-index: 1000;
+  opacity: 0.2;
+  top: -100px; /* adjust */
+  animation: animateWave 3s linear infinite;
+}
+footer .wave#wave4 {
+  z-index: 999;
+  opacity: 0.7;
+  top: -100px; /* adjust */
+  animation: animateWave02 3s linear infinite;
+}
+/* The original bottom: 0, 10px, 15px, 20px would place waves at the very bottom edge of the footer, stacked.
+   If they are the top visual border, top: -100px (or similar) is correct, and then slight variations in 'top' for layered effect if needed.
+   For simplicity, keeping original 'bottom' which stacks them at the bottom edge of footer visually.
+*/
 footer .wave#wave1 {
   z-index: 100;
   opacity: 1;
@@ -1600,10 +1697,6 @@ footer .wave#wave4 {
   bottom: 20px;
   animation: animateWave02 3s linear infinite;
 }
-.links__footer{
-  display: flex;
-  flex-wrap: wrap;
-}
 
 @keyframes animateWave {
   0% {
@@ -1623,6 +1716,7 @@ footer .wave#wave4 {
 }
 
 .glass {
+  /* This class is not used in the provided HTML */
   background: linear-gradient(
     135deg,
     rgba(255, 255, 255, 0.1),
@@ -1643,11 +1737,11 @@ footer .wave#wave4 {
   right: 30px;
   border-radius: 12px;
   background: #fff;
-  padding: 27px 35px 27px 25px;
+  padding: 20px 35px 20px 25px; /* Adjusted padding slightly */
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
   border-left: 6px solid #4070f4;
-  overflow: hidden;
-  z-index: 999;
+  overflow: hidden; /* Important for progress bar */
+  z-index: 9999; /* Ensure it's above other fixed elements */
   transform: translateX(calc(100% + 30px));
   transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.35);
 }
@@ -1677,35 +1771,41 @@ footer .wave#wave4 {
   display: flex;
   flex-direction: column;
   margin: 0 20px;
-  gap: 31px;
+  gap: 5px; /* Reduced gap for tighter text */
   align-items: flex-start;
 }
 
 .message .text {
-  font-size: 20px;
+  font-size: 1rem; /* Adjusted for consistency */
   font-weight: 400;
   color: #666666;
 }
 
 .message .text.text-1 {
+  /* Title of toast */
   font-weight: 600;
   color: #333;
+  font-size: 1.1rem; /* Slightly larger title */
 }
 
 .toast .closetoast {
+  /* Close button */
   position: absolute;
   top: 10px;
   right: 15px;
   padding: 5px;
   cursor: pointer;
   opacity: 0.7;
+  font-size: 1.2rem; /* Make X icon a bit larger */
 }
 
-.toast .close:hover {
+.toast .closetoast:hover {
+  /* Corrected selector from .close:hover */
   opacity: 1;
 }
 
 .toast .progres {
+  /* Progress bar container */
   position: absolute;
   bottom: 0;
   left: 0;
@@ -1715,27 +1815,30 @@ footer .wave#wave4 {
 }
 
 .toast .progres:before {
+  /* Actual progress bar */
   content: "";
   position: absolute;
   bottom: 0;
-  right: 0;
+  right: 0; /* Starts from right and shrinks to left */
   height: 100%;
   width: 100%;
   background-color: #4070f4;
 }
 
 .progres.activeto:before {
-  animation: progres 5s linear forwards;
+  /* When toast is active, start animation */
+  animation: progres_animation 5s linear forwards; /* Renamed animation */
 }
 
-@keyframes progres {
+@keyframes progres_animation {
+  /* Renamed animation */
   100% {
-    right: 100%;
+    right: 100%; /* Moves from right:0 to right:100%, effectively disappearing leftwards */
   }
 }
 
-button {
-  padding: 12px 20px;
+/* button { */ /* General button style, might conflict. Consider specific class .buttonToast */
+/* padding: 12px 20px;
   font-size: 20px;
   outline: none;
   border: none;
@@ -1744,15 +1847,17 @@ button {
   border-radius: 6px;
   cursor: pointer;
   transition: 0.3s;
-}
+} */
 
-button:hover {
+/* button:hover {
   background-color: #0e4bf1;
-}
+} */
 
 .toast.activeto ~ .buttonToast {
+  /* Example if there's a button that triggers toast */
   pointer-events: none;
 }
 .obg {
+  /* "Obligatory" field indicator */
   color: red;
 }

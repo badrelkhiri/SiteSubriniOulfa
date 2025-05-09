@@ -1,0 +1,328 @@
+/** @format */
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;900&display=swap"); /* Added more weights */
+
+:root {
+  --color-primary: #0075ff;
+  --color-secondary: #fffa66; /* Renamed from scondaire */
+  --color-accent: #f4ff67;   /* Example accent */
+  --color-dark: #001a2e;
+  --color-light: #f8f6f6;
+  --color-text: #333;
+  --color-text-light: #f0f0f0;
+  --color-grey: #777;
+  --color-border: #e0e0e0;
+
+  --font-primary: "Poppins", sans-serif;
+
+  --header-sticky-height: 70px; /* Approximate height, adjust after styling */
+  --top-bar-height: 40px; /* Approximate height */
+}
+
+/* --- Global Resets & Base --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px; /* Base font size */
+}
+
+body {
+  font-family: var(--font-primary);
+  color: var(--color-text);
+  line-height: 1.6;
+  background-color: #ffffff; /* Cleaner default background */
+  overflow-x: hidden; /* Already had this */
+}
+
+/* Add this if you have sections you scroll to */
+.scroll-target {
+  scroll-margin-top: calc(var(--header-sticky-height) + 10px); /* Adjust as needed */
+}
+
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block; /* Removes bottom space under images */
+}
+
+a {
+  text-decoration: none;
+  color: var(--color-primary);
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--color-accent);
+}
+
+ul {
+  list-style: none;
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px; /* Max width for content */
+  margin: 0 auto;
+  padding: 0 15px; /* Horizontal padding */
+}
+
+.page-title {
+    text-align: center;
+    font-size: 2.5rem;
+    color: var(--color-dark);
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    font-weight: 700;
+}
+
+/* --- Header 1: Top Bar --- */
+.sec-head1 {
+  background-color: var(--color-dark);
+  color: var(--color-text-light);
+  padding: 0.5rem 0; /* Reduced padding */
+  font-size: 0.85rem; /* Slightly smaller font */
+  height: var(--top-bar-height);
+  display: flex;
+  align-items: center;
+}
+
+.sec-head1 .head1 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.sec-head1 .infos {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem; /* Increased gap */
+  flex-wrap: wrap; /* Allow wrapping on smaller screens */
+}
+
+.sec-head1 .info-item {
+  display: flex;
+  align-items: center;
+  color: var(--color-text-light); /* Ensure link color is light */
+  transition: color 0.2s ease;
+}
+.sec-head1 .info-item:hover {
+  color: var(--color-secondary); /* Yellow on hover */
+}
+
+.sec-head1 .info-item i {
+  margin-right: 0.5rem;
+  font-size: 1rem; /* Consistent icon size */
+  color: var(--color-secondary); /* Icons in accent color */
+}
+.sec-head1 .info-item span {
+    line-height: 1.3; /* Adjust for multi-line spans */
+}
+
+.sec-head1 .horaire span {
+  white-space: nowrap; /* Prevent "De 08h15..." from breaking awkwardly if space is tight */
+}
+
+
+.sec-head1 .soc {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.sec-head1 .soc a {
+  color: var(--color-text-light);
+  font-size: 1.1rem; /* Slightly larger social icons */
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.sec-head1 .soc a:hover {
+  color: var(--color-secondary);
+  transform: translateY(-2px);
+}
+/* Specific social icon hover colors (optional, adds brand consistency) */
+.sec-head1 .soc a:hover .fa-facebook-f { color: #1877F2; }
+.sec-head1 .soc a:hover .fa-instagram { color: #E4405F; }
+.sec-head1 .soc a:hover .fa-youtube { color: #FF0000; }
+.sec-head1 .soc a:hover .fa-whatsapp { color: #25D366; }
+
+
+/* --- Header 2: Main Navigation --- */
+.sticky-header { /* Renamed from .sec-head2 for clarity */
+  background: #ffffff; /* Light background for main nav */
+  border-bottom: 1px solid var(--color-border);
+  padding: 0.5rem 0;
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  transition: box-shadow 0.3s ease, background-color 0.3s ease;
+  height: var(--header-sticky-height);
+  display: flex;
+  align-items: center;
+}
+
+.sticky-header.scrolled { /* Class to be added by JS on scroll */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  background-color: rgba(255, 255, 255, 0.95); /* Slight transparency on scroll */
+  backdrop-filter: blur(5px);
+}
+
+.sticky-header .head2 { /* .head2 is the container inside */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.sticky-header .logo img {
+  height: 50px; /* Adjust logo height */
+  width: auto;
+  transition: height 0.3s ease;
+}
+.sticky-header.scrolled .logo img {
+    height: 40px; /* Slightly smaller logo on scroll */
+}
+
+.sticky-header .links ul {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem; /* Spacing between nav items */
+}
+
+.sticky-header .links ul a {
+  color: var(--color-dark);
+  font-weight: 500; /* Medium weight for nav links */
+  font-size: 0.95rem;
+  padding: 0.5rem 0.3rem; /* Vertical padding for larger click area, minimal horizontal */
+  position: relative;
+  text-transform: uppercase; /* Optional: for a more formal look */
+  letter-spacing: 0.5px;
+}
+
+.sticky-header .links ul a::after {
+  content: "";
+  position: absolute;
+  bottom: 0; /* Underline at the bottom of the padding box */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 2px;
+  background-color: var(--color-primary);
+  transition: width 0.3s ease;
+}
+
+.sticky-header .links ul a:hover::after,
+.sticky-header .links ul a.activee::after {
+  width: 70%; /* Width of underline on hover/active */
+}
+
+.sticky-header .links ul a.activee {
+  color: var(--color-primary); /* Active link color */
+  font-weight: 600;
+}
+.sticky-header .links ul a:hover {
+  color: var(--color-primary);
+}
+
+
+.sticky-header .header-right {
+  display: none; /* Hidden on desktop */
+}
+
+.sticky-header .hamburger-btn {
+    background: none;
+    border: none;
+    color: var(--color-dark);
+    font-size: 1.5rem; /* Hamburger icon size */
+    cursor: pointer;
+    padding: 0.5rem;
+    display: flex; /* For centering icon if needed */
+    align-items: center;
+    justify-content: center;
+}
+
+/* --- Media Queries for Responsive Navigation --- */
+@media (max-width: 992px) { /* Tablet and below */
+  .sec-head1 .infos {
+    gap: 1rem;
+    font-size: 0.8rem;
+  }
+  .sec-head1 .info-item i {
+      font-size: 0.9rem;
+  }
+
+  .sticky-header .links {
+    display: none; /* Hide desktop nav links */
+    position: absolute;
+    top: 100%; /* Position below header */
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 1rem 0;
+    border-top: 1px solid var(--color-border);
+    z-index: 999; /* Below main sticky header but above content */
+  }
+
+  .sticky-header .links.active { /* This class will be toggled by JS */
+    display: block;
+  }
+
+  .sticky-header .links ul {
+    flex-direction: column; /* Stack links vertically */
+    align-items: center; /* Center links */
+    gap: 0;
+  }
+
+  .sticky-header .links ul li {
+    width: 100%;
+    text-align: center;
+  }
+
+  .sticky-header .links ul a {
+    display: block; /* Make links full width for easier tapping */
+    padding: 0.8rem 1rem;
+    border-bottom: 1px solid var(--color-border);
+    width: 100%;
+  }
+  .sticky-header .links ul li:last-child a {
+      border-bottom: none;
+  }
+
+  .sticky-header .links ul a::after {
+    display: none; /* Remove underline effect for mobile nav */
+  }
+
+  .sticky-header .header-right {
+    display: block; /* Show hamburger button */
+  }
+}
+
+@media (max-width: 768px) { /* Further adjustments for smaller screens */
+    .sec-head1 {
+        /* display: none; */ /* Option: hide top bar entirely on small screens */
+        /* Or adjust further: */
+        font-size: 0.75rem;
+    }
+    .sec-head1 .head1 {
+        flex-direction: column; /* Stack infos and soc on very small screens */
+        gap: 0.5rem;
+        padding: 0.5rem 0;
+        height: auto; /* Allow height to adjust */
+    }
+    .sec-head1 .infos {
+        justify-content: center; /* Center info items when stacked */
+        gap: 0.8rem;
+    }
+    .page-title {
+        font-size: 2rem;
+    }
+}
